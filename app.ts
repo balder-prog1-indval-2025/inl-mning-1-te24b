@@ -1,15 +1,31 @@
-import "./app2";
+
+//oskar början
 
 
-
-let x =50
+let x =50  
 let y = 50
+
+
+
+
+let å = 50
+
 
 update = () => {
     
     clear()
   
-    rectangle (y,x,100,100)
+    rectangle (W-100,å,100,100)
+    
+    if (keyboard.up) {
+        (å -= 1)
+
+    } 
+    if (keyboard.down) {
+        ( å += 1)
+
+    } 
+    rectangle (0,x,100,100)
     
     if (keyboard.w) {
         (x -= 1)
@@ -18,25 +34,6 @@ update = () => {
     if (keyboard.s) {
         (x += 1)
 
-    } 
-}
-
-let p = 400
-let å = 50
-
-
-update = () => {
+    }
     
-    clear()
-  
-    rectangle (y,x,100,100)
-    
-    if (keyboard.up) {
-        (p -= 1)
-
-    } 
-    if (keyboard.down) {
-        (å += 1)
-
-    } 
-}
+} //oskar slut
