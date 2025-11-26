@@ -15,25 +15,25 @@ update = () => {
     
     clear()
   
-    rectangle (W-100,å,100,100)
+    rectangle (W-150,å,50,H/5)
     
-    if (keyboard.up) {
-        (å -= 1)
+    if (keyboard.up && å > 0) {
+        (å -= H/200)
 
     } 
-    if (keyboard.down) {
-        ( å += 1)
+    if (keyboard.down && å < H - H/5) {
+        ( å += H/200)
 
     } 
-    rectangle (0,x,100,100)
+    rectangle (50,x,50,H/5)
     
-    if (keyboard.w) {
-        (x -= 1)
+    if (keyboard.w && x > 0)  {
+        (x -= H/200)
 
     } 
-    if (keyboard.s) {
-        (x += 1)
+    if (keyboard.s && x < H - H/5) {
+        (x += H/200)
 
     }
     
-} //oskar slut
+} //oskar sluts
