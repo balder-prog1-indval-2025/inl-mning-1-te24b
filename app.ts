@@ -37,3 +37,7 @@ update = () => {
     }
     
 } //oskar slut
+
+var audio = new Audio('the-good,-the-bad-and-the-ugly-main-theme-made-with-Voicemod.mp3');
+audio.play();
+audio.loop = true 
