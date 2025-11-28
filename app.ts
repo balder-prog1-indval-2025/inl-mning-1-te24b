@@ -5,7 +5,11 @@
 let x =50  
 let y = 50
 
+var audio = new Audio('the-good,-the-bad-and-the-ugly-main-theme-made-with-Voicemod.mp3'); 
 
+audio.play(); 
+
+audio.loop = true  
 
 
 let å = 50
@@ -14,7 +18,7 @@ let å = 50
 update = () => {
     
     clear()
-  
+    
     rectangle (W-150,å,50,H/5)
     
     if (keyboard.up && å > 0) {
@@ -36,4 +40,9 @@ update = () => {
 
     }
     
-} //oskar sluts
+
+
+}
+
+
+    
