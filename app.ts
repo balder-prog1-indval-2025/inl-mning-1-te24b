@@ -40,9 +40,6 @@ update = () => {
 
     }
     
+} //oskar slut
 
 
-}
-
-
-    
