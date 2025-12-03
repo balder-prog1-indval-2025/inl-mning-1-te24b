@@ -79,4 +79,4 @@ update = () => {
         nuvarande_y_movement = y/v1 * v2
     }
 }
-export{}
+export{}1
