@@ -1,4 +1,3 @@
-
 //oskar början
 let ogge = await fetchImage("cards/ogge.png")
 let marre = await fetchImage("cards/marre.png")
