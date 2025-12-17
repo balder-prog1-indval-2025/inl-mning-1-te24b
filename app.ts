@@ -1,7 +1,7 @@
 //oskar början
-let bäst = await fetchImage("cards/krona.jpg")
-let ogge = await fetchImage("cards/ogge.png")
-let marre = await fetchImage("cards/marre.png")
+let bäst = await fetchImage("krona.jpg")
+let ogge = await fetchImage("ogge.png")
+let marre = await fetchImage("marre.png")
 
 let z =H/2 - H/10
 
@@ -14,7 +14,7 @@ var audio = new Audio('The Good the Bad and the Ugly.mp3');
 audio.play(); 
 
 audio.loop = true  
-let bakrund = await fetchImage("cards/isak fisak.png")
+let bakrund = await fetchImage("isak fisak.png")
 
 let å = H/2 - H/10
 //marre slut
@@ -24,7 +24,7 @@ let explotion = await fetchImage("explosion-explode.gif")
 var explo = new Audio('explosion-meme_dTCfAHs.mp3')
 let x_pos = W/2-37.5
 let y_pos = H/2-50
-let ippe = await fetchImage("cards/ipse.png")
+let ippe = await fetchImage("ipse.png")
 let hitbox1 = new Hitbox(0, -50, W, 50)
 let hitbox2 = new Hitbox(-50, 0, 50, H)
 let hitbox3 = new Hitbox(0, H, W, 50)
@@ -46,6 +46,7 @@ function hastighet(w_hastighet_x, w_hastighet_y) {
 let sant2 = true
 let sant = true
 let wait_time = 0
+let wait_time2 = 0
 update = async () => {
     if(sant) {
         //oskar början
@@ -161,36 +162,39 @@ update = async () => {
                 nuvarande_y_movement = y/v1 * v2
             }
         }
-        else if(keyboard.d || keyboard.right) {
-            if(sant2) {
-                x=x/2
-                y/y/2
-                v2 = W/200
-                if(hbippe.intersects(hitbox2) && (nuvarande_y_movement > 0)) {
-                    hastighet(randomItem(W/150, W/200), randomItem(W/150, W/200))
-                }
-                else if(hbippe.intersects(hitbox2) && (nuvarande_y_movement < 0)) {
-                    hastighet(randomItem(W/150, W/200), randomItem(W/-150, W/-200))
-                }
-                else if(hbippe.intersects(hitbox4) && (nuvarande_y_movement > 0)) {
-                    hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
-                }
-                else if(hbippe.intersects(hitbox4) && (nuvarande_y_movement < 0)) {
-                    hastighet(randomItem(W/-150, W/-200), randomItem(W/-150, W/-200))
-                }
-                else if(hbippe.intersects(pinn2)) {
-                    sant = false
-                    sant2 = false
-                    explo.play();
-                    ctx.drawImage(explotion, 0, 0, W, H)
-                }
-                else if(hbippe.intersects(pinn)) {
-                    sant = false
-                    sant2 = false
-                    explo.play();
-                    ctx.drawImage(explotion, 0, 0, W, H)
-                }
+        else if(sant2 && (keyboard.d || keyboard.right)) {
+             x=x/2
+             y/y/2
+             v2 = W/200
+             if(hbippe.intersects(hitbox2) && (nuvarande_y_movement > 0)) {
+                 hastighet(randomItem(W/150, W/200), randomItem(W/150, W/200))
+             }
+             else if(hbippe.intersects(hitbox2) && (nuvarande_y_movement < 0)) {
+                 hastighet(randomItem(W/150, W/200), randomItem(W/-150, W/-200))
+             }
+             else if(hbippe.intersects(hitbox4) && (nuvarande_y_movement > 0)) {
+                 hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
+             }
+             else if(hbippe.intersects(hitbox4) && (nuvarande_y_movement < 0)) {
+                hastighet(randomItem(W/-150, W/-200), randomItem(W/-150, W/-200))
+             }
+             else if(hbippe.intersects(pinn2)) {
+                 sant = false
+                 sant2 = false
+                 explo.play();
+                ctx.drawImage(explotion, 0, 0, W, H)
+             }
+            else if(hbippe.intersects(pinn)) {
+                sant = false
+                 sant2 = false
+                explo.play();
+                 ctx.drawImage(explotion, 0, 0, W, H)
             }
+        } else if(wait_time2 < 5000) {
+            wait_time2 += deltaTime
+        } else if(wait_time2 == 5000) {
+            wait_time2 = 0
+            sant2 = true
         }
         else {
             v2 = W/130
@@ -216,7 +220,6 @@ update = async () => {
     } else if (wait_time < 1000) {
         wait_time += deltaTime
     } else {
-        sant2 = true
         sant = true
         wait_time = 0
     }
