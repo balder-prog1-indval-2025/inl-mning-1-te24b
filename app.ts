@@ -52,8 +52,8 @@ update = async () => {
     clear()
     
     ctx.drawImage(bakrund, 0, 0, W, H)
-    rectangle (W-150,upnerpil,W/50,H/5,"yellow")
-    let pinn = new Hitbox (W-150,upnerpil,W/50,H/5)
+    rectangle (W-75,upnerpil,W/50,H/5,"yellow")
+    let pinn = new Hitbox (W-75,upnerpil,W/50,H/5)
     if (keyboard.up && upnerpil > 0) {
         (upnerpil -= H/200)
 
@@ -222,7 +222,12 @@ update = async () => {
         sant = true
         wait_time = 0
     }
-    //Isak Stop
+ 
+ 
+   //Isak Stop
+
+
+   
 }
 
 
