@@ -34,8 +34,8 @@ update = async () => {
     clear()
     
     ctx.drawImage(bakrund, 0, 0, W, H)
-    rectangle (W-150,å,W/50,H/5,"yellow")
-    let pinn = new Hitbox (W-150,å,W/50,H/5)
+    rectangle (W-W/15,å,W/50,H/5,"yellow")
+    let pinn = new Hitbox (W-W/15,å,W/50,H/5)
     if (keyboard.up && å > 0) {
         (å -= H/200)
 
@@ -44,8 +44,8 @@ update = async () => {
         ( å += H/200)
 
     } 
-    rectangle (50,z,W/50,H/5,"yellow")
-    let pinn2 = new Hitbox (50,z,W/50,H/5)
+    rectangle (0+W/20,z,W/50,H/5,"yellow")
+    let pinn2 = new Hitbox (0+W/20,z,W/50,H/5)
     if (keyboard.w && z > 0)  {
         (z-= H/200)
 
@@ -147,7 +147,7 @@ update = async () => {
         nuvarande_x_movement = x/v1 * v2
         nuvarande_y_movement = y/v1 * v2
     }
-    //isak slut
+ //isak slut
     //Oskar Start
     if (keyboard.a) {
      ctx.drawImage(marre, x_pos, y_pos, W/20, H/10)
@@ -158,13 +158,15 @@ update = async () => {
     else {
      ctx.drawImage(ippe, x_pos, y_pos, W/20, H/10)
     }
-    //Oskar stop
+    //Oskar stopS
 
-
+  
 
 }
 
 
+
+ 
 
 export { };
 
