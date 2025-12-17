@@ -43,18 +43,17 @@ function hastighet(w_hastighet_x, w_hastighet_y) {
     nuvarande_y_movement = y/v1 * v2
 }
 //isak slut
-let sant2 = true
 let sant = true
 let wait_time = 0
 let wait_time2 = 0
 update = async () => {
     //oskar början
+    if(sant) {
     clear()
-    
     ctx.drawImage(bakrund, 0, 0, W, H)
     rectangle (W-75,upnerpil,W/50,H/5,"yellow")
     let pinn = new Hitbox (W-75,upnerpil,W/50,H/5)
-    if (keyboard.up && upnerpil > 0) {
+        if (keyboard.up && upnerpil > 0) {
         (upnerpil -= H/200)
 
         } 
@@ -142,26 +141,13 @@ update = async () => {
             x=x*2
             y=y*2
             v2 = W/80
-            if(hbippe.intersects(hitbox2)) {
+            if(hbippe.intersects(hitbox2) || hbippe.intersects(hitbox4)) {
                 x_pos = W/2-37.5
                 y_pos = H/2-50
-                let x=randomItem(W/-150, W/150)
-                let y=randomItem(W/-150, W/150)
-                let v1 = Math.sqrt(x**2 + y**2)
-                nuvarande_x_movement = x/v1 * v2
-                nuvarande_y_movement = y/v1 * v2
-            }
-            else if(hbippe.intersects(hitbox4)) {
-                x_pos = W/2-37.5
-                y_pos = H/2-50
-                let x=randomItem(W/-150, W/150)
-                let y=randomItem(W/-150, W/150)
-                let v1 = Math.sqrt(x**2 + y**2)
-                nuvarande_x_movement = x/v1 * v2
-                nuvarande_y_movement = y/v1 * v2
+                hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
             }
         }
-        else if(sant2 && (keyboard.d || keyboard.right)) {
+        else if(keyboard.d || keyboard.right) {
              x=x/2
              y/y/2
              v2 = W/200
@@ -179,49 +165,34 @@ update = async () => {
              }
              else if(hbippe.intersects(pinn2)) {
                  sant = false
-                 sant2 = false
                  explo.play();
                 ctx.drawImage(explotion, 0, 0, W, H)
              }
             else if(hbippe.intersects(pinn)) {
                 sant = false
-                 sant2 = false
                 explo.play();
                  ctx.drawImage(explotion, 0, 0, W, H)
             }
-        } else if(wait_time2 < 5000) {
-            wait_time2 += deltaTime
-        } else if(wait_time2 == 5000) {
-            wait_time2 = 0
-            sant2 = true
         }
         else {
             v2 = W/130
             if(hbippe.intersects(hitbox2)) {
                 x_pos = W/2-37.5
                 y_pos = H/2-50
-                let x=randomItem(W/-150, W/150)
-                let y=randomItem(W/-150, W/150)
-                let v1 = Math.sqrt(x**2 + y**2)
-                nuvarande_x_movement = x/v1 * v2
-                nuvarande_y_movement = y/v1 * v2
+                hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
             }
             else if(hbippe.intersects(hitbox4)) {
                 x_pos = W/2-37.5
                 y_pos = H/2-50
-                let x=randomItem(W/-150, W/150)
-                let y=randomItem(W/-150, W/150)
-                let v1 = Math.sqrt(x**2 + y**2)
-                nuvarande_x_movement = x/v1 * v2
-                nuvarande_y_movement = y/v1 * v2
+                hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
             }
         }
-     if (wait_time < 1000) {
-        wait_time += deltaTime
-    } else {
-        sant = true
-        wait_time = 0
-    }
+    } else if (wait_time < 1000) {
+            wait_time += deltaTime
+        } else {
+            sant = true
+            wait_time = 0
+        }
  
  
    //Isak Stop
