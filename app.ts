@@ -24,6 +24,7 @@ let explotion = await fetchImage("explosion-explode.gif")
 var explo = new Audio('explosion-meme_dTCfAHs.mp3')
 let x_pos = W/2-37.5
 let y_pos = H/2-50
+let hbippe = new Hitbox(x_pos, y_pos, W/20, H/10)
 let ippe = await fetchImage("ipse.png")
 let hitbox1 = new Hitbox(0, -50, W, 50)
 let hitbox2 = new Hitbox(-50, 0, 50, H)
@@ -35,12 +36,40 @@ let y = randomItem(W/-150, W/150, W/-80, W/80)
 let v1 = Math.sqrt(x**2 + y**2)
 let nuvarande_y_movement = y/v1 * v2
 let nuvarande_x_movement = x/v1 * v2
+let pinn = new Hitbox (W-75,upnerpil,W/50,H/5)
+let pinn2 = new Hitbox (0+W/30,upnerwasd,W/50,H/5)
 function hastighet(w_hastighet_x, w_hastighet_y) {
     let x=w_hastighet_x
     let y=w_hastighet_y
     let v1 = Math.sqrt(x**2 + y**2)
     nuvarande_x_movement = x/v1 * v2
     nuvarande_y_movement = y/v1 * v2
+}
+function rörelse_hitbox() {
+    if(hbippe.intersects(hitbox1) && (nuvarande_x_movement > 0)) {
+        hastighet(randomItem(W/150, W/200), randomItem(W/150, W/200))
+    }
+    else if(hbippe.intersects(hitbox1) && (nuvarande_x_movement < 0)) {
+        hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
+    }
+    else if(hbippe.intersects(hitbox3) && (nuvarande_x_movement > 0)) {
+        hastighet(randomItem(W/150, W/200), randomItem(W/-150, W/-200))
+    }
+    else if(hbippe.intersects(hitbox3) && (nuvarande_x_movement < 0)) {
+        hastighet(randomItem(W/-150, W/-200), randomItem(W/-150, W/-200))
+    }
+    else if(hbippe.intersects(pinn) && (nuvarande_y_movement > 0)) {
+        hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
+    }
+    else if(hbippe.intersects(pinn) && (nuvarande_y_movement < 0)) {
+        hastighet(randomItem(W/-150, W/-200), randomItem(W/-150, W/-200))
+    }
+    else if(hbippe.intersects(pinn2) && (nuvarande_y_movement > 0)) {
+        hastighet(randomItem(W/150, W/200), randomItem(W/150, W/200))
+    }
+    else if(hbippe.intersects(pinn2) && (nuvarande_y_movement < 0)) {
+        hastighet(randomItem(W/150, W/200), randomItem(W/-150, W/-200))
+    }
 }
 //isak slut
 let sant = true
@@ -52,7 +81,8 @@ update = async () => {
     clear()
     ctx.drawImage(bakrund, 0, 0, W, H)
     rectangle (W-75,upnerpil,W/50,H/5,"yellow")
-    let pinn = new Hitbox (W-75,upnerpil,W/50,H/5)
+    pinn.x = W-75
+    pinn.y = upnerpil
         if (keyboard.up && upnerpil > 0) {
         (upnerpil -= H/200)
 
@@ -62,7 +92,8 @@ update = async () => {
 
         } 
         rectangle (0+W/30,upnerwasd,W/50,H/5,"yellow")
-        let pinn2 = new Hitbox (0+W/30,upnerwasd,W/50,H/5)
+        pinn2.x = 0+W/30
+        pinn2.y = upnerpil
         if (keyboard.w && upnerwasd > 0)  {
             (upnerwasd-= H/150)
 
@@ -75,31 +106,9 @@ update = async () => {
         //isak start
         x_pos += nuvarande_x_movement
         y_pos += nuvarande_y_movement
-        let hbippe = new Hitbox(x_pos, y_pos, W/20, H/10)
-        if(hbippe.intersects(hitbox1) && (nuvarande_x_movement > 0)) {
-            hastighet(randomItem(W/150, W/200), randomItem(W/150, W/200))
-        }
-        else if(hbippe.intersects(hitbox1) && (nuvarande_x_movement < 0)) {
-            hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
-        }
-        else if(hbippe.intersects(hitbox3) && (nuvarande_x_movement > 0)) {
-            hastighet(randomItem(W/150, W/200), randomItem(W/-150, W/-200))
-        }
-        else if(hbippe.intersects(hitbox3) && (nuvarande_x_movement < 0)) {
-            hastighet(randomItem(W/-150, W/-200), randomItem(W/-150, W/-200))
-        }
-        else if(hbippe.intersects(pinn) && (nuvarande_y_movement > 0)) {
-            hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
-        }
-        else if(hbippe.intersects(pinn) && (nuvarande_y_movement < 0)) {
-            hastighet(randomItem(W/-150, W/-200), randomItem(W/-150, W/-200))
-        }
-        else if(hbippe.intersects(pinn2) && (nuvarande_y_movement > 0)) {
-            hastighet(randomItem(W/150, W/200), randomItem(W/150, W/200))
-        }
-        else if(hbippe.intersects(pinn2) && (nuvarande_y_movement < 0)) {
-            hastighet(randomItem(W/150, W/200), randomItem(W/-150, W/-200))
-        }
+        hbippe.x = x_pos
+        hbippe.y = y_pos
+        rörelse_hitbox()
         //isak slut
         //Oskar Start
         if (hbippe.intersects(hitbox2) ){
@@ -176,12 +185,7 @@ update = async () => {
         }
         else {
             v2 = W/130
-            if(hbippe.intersects(hitbox2)) {
-                x_pos = W/2-37.5
-                y_pos = H/2-50
-                hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
-            }
-            else if(hbippe.intersects(hitbox4)) {
+            if(hbippe.intersects(hitbox2) || hbippe.intersects(hitbox4)) {
                 x_pos = W/2-37.5
                 y_pos = H/2-50
                 hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
