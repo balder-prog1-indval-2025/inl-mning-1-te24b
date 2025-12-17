@@ -130,12 +130,12 @@ update = async () => {
         ctx.drawImage(ippe, x_pos, y_pos, W/20, H/10)
         }
         if (score1 < score2 ){
-            ctx.drawImage(bäst,W - W / 2 - 200 , 28, W/20, H/10)
+            ctx.drawImage(bäst,W - W / 2 - 200 , 28, W/40, H/20)
      
         }
      
         if (score1 > score2 ){
-            ctx.drawImage(bäst, W - W / 2 + 200, 28, W/20, H/10)
+            ctx.drawImage(bäst, W - W / 2 + 200, 28, W/40, H/20)
      
         }
      
