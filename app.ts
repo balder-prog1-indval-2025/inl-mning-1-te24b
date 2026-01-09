@@ -120,15 +120,6 @@ update = async () => {
             text(score1, W - W / 2 + 100, 50, 48, 'black')
             text(score2, W - W / 2 - 100, 50, 48, 'svart')
             text('score', W / 2 -55, 50, 50, 'svart')
-        if (keyboard.a || keyboard.left) {
-        ctx.drawImage(marre, x_pos, y_pos, W/20, H/10)
-        }
-        else if (keyboard.d || keyboard.right) {
-        ctx.drawImage(ogge, x_pos, y_pos, W/20, H/10)
-        }
-        else {
-        ctx.drawImage(ippe, x_pos, y_pos, W/20, H/10)
-        }
         if (score1 < score2 ){
             ctx.drawImage(bäst,W - W / 2 - 200 , 28, W/40, H/20)
      
@@ -150,6 +141,9 @@ update = async () => {
             x=x*2
             y=y*2
             v2 = W/80
+            //oskar start
+            ctx.drawImage(marre, x_pos, y_pos, W/20, H/10)
+            //oskar slut
             if(hbippe.intersects(hitbox2) || hbippe.intersects(hitbox4)) {
                 x_pos = W/2-37.5
                 y_pos = H/2-50
@@ -160,6 +154,9 @@ update = async () => {
              x=x/2
              y/y/2
              v2 = W/200
+             //oskar start
+             ctx.drawImage(ogge, x_pos, y_pos, W/20, H/10)
+             //oskar slut
              if(hbippe.intersects(hitbox2) && (nuvarande_y_movement > 0)) {
                  hastighet(randomItem(W/150, W/200), randomItem(W/150, W/200))
              }
@@ -185,6 +182,9 @@ update = async () => {
         }
         else {
             v2 = W/130
+            //oskar start
+            ctx.drawImage(ippe, x_pos, y_pos, W/20, H/10)
+            //oskar slut
             if(hbippe.intersects(hitbox2) || hbippe.intersects(hitbox4)) {
                 x_pos = W/2-37.5
                 y_pos = H/2-50
