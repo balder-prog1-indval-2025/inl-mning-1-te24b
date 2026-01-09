@@ -82,8 +82,6 @@ update = async () => {
     ctx.drawImage(bakrund, 0, 0, W, H)
     rectangle (W-75,upnerpil,W/50,H/5,"yellow")
     pinn.x = W-75
-    pinn.drawOutline("red")
-    pinn2.drawOutline("red")
     pinn.y = upnerpil
         if (keyboard.up && upnerpil > 0) {
         (upnerpil -= H/150)
