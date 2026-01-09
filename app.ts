@@ -86,7 +86,7 @@ update = async () => {
     pinn2.drawOutline("red")
     pinn.y = upnerpil
         if (keyboard.up && upnerpil > 0) {
-        (upnerpil -= H/200)
+        (upnerpil -= H/150)
 
         } 
         else if (keyboard.down && upnerpil < H - H/5) {
@@ -95,9 +95,9 @@ update = async () => {
         } 
         rectangle (0+W/30,upnerwasd,W/50,H/5,"yellow")
         pinn2.x = 0+W/30
-        pinn2.y = upnerpil
+        pinn2.y = upnerwasd
         if (keyboard.w && upnerwasd > 0)  {
-            (upnerwasd-= H/150)
+            (upnerwasd -= H/150)
 
         } 
         else if (keyboard.s && upnerwasd < H - H/5) {
