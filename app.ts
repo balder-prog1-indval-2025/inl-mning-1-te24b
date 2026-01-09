@@ -73,8 +73,11 @@ function rörelse_hitbox() {
 }
 //isak slut
 let sant = true
+let sant2 = true
+let sant3 = true
 let wait_time = 0
 let wait_time2 = 0
+let wait_time3 = 0
 update = async () => {
     //oskar början
     if(sant) {
@@ -137,60 +140,62 @@ update = async () => {
         }
         //Oskar stop
         //Isak Start
-        if(keyboard.a || keyboard.left) {
-            x=x*2
-            y=y*2
-            v2 = W/80
-            //oskar start
-            ctx.drawImage(marre, x_pos, y_pos, W/20, H/10)
-            //oskar slut
-            if(hbippe.intersects(hitbox2) || hbippe.intersects(hitbox4)) {
-                x_pos = W/2-37.5
-                y_pos = H/2-50
-                hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
+        if(sant2) {
+            if(keyboard.a || keyboard.left) {
+                x=x*2
+                y=y*2
+                v2 = W/80
+                //oskar start
+                ctx.drawImage(marre, x_pos, y_pos, W/20, H/10)
+                //oskar slut
+                if(hbippe.intersects(hitbox2) || hbippe.intersects(hitbox4)) {
+                    x_pos = W/2-37.5
+                    y_pos = H/2-50
+                    hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
+                }
             }
-        }
-        else if(keyboard.d || keyboard.right) {
-             x=x/2
-             y/y/2
-             v2 = W/200
-             //oskar start
-             ctx.drawImage(ogge, x_pos, y_pos, W/20, H/10)
-             //oskar slut
-             if(hbippe.intersects(hitbox2) && (nuvarande_y_movement > 0)) {
-                 hastighet(randomItem(W/150, W/200), randomItem(W/150, W/200))
-             }
-             else if(hbippe.intersects(hitbox2) && (nuvarande_y_movement < 0)) {
-                 hastighet(randomItem(W/150, W/200), randomItem(W/-150, W/-200))
-             }
-             else if(hbippe.intersects(hitbox4) && (nuvarande_y_movement > 0)) {
-                 hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
-             }
-             else if(hbippe.intersects(hitbox4) && (nuvarande_y_movement < 0)) {
-                hastighet(randomItem(W/-150, W/-200), randomItem(W/-150, W/-200))
-             }
-             else if(hbippe.intersects(pinn2)) {
-                 sant = false
-                 explo.play();
-                ctx.drawImage(explotion, 0, 0, W, H)
-             }
-            else if(hbippe.intersects(pinn)) {
-                sant = false
-                explo.play();
-                 ctx.drawImage(explotion, 0, 0, W, H)
+            else if(keyboard.d || keyboard.right) {
+                x=x/2
+                y/y/2
+                v2 = W/200
+                //oskar start
+                ctx.drawImage(ogge, x_pos, y_pos, W/20, H/10)
+                //oskar slut
+                if(hbippe.intersects(hitbox2) && (nuvarande_y_movement > 0)) {
+                    hastighet(randomItem(W/150, W/200), randomItem(W/150, W/200))
+                }
+                else if(hbippe.intersects(hitbox2) && (nuvarande_y_movement < 0)) {
+                    hastighet(randomItem(W/150, W/200), randomItem(W/-150, W/-200))
+                }
+                else if(hbippe.intersects(hitbox4) && (nuvarande_y_movement > 0)) {
+                    hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
+                }
+                else if(hbippe.intersects(hitbox4) && (nuvarande_y_movement < 0)) {
+                    hastighet(randomItem(W/-150, W/-200), randomItem(W/-150, W/-200))
+                }
+                else if(hbippe.intersects(pinn2)) {
+                    sant = false
+                    explo.play();
+                    ctx.drawImage(explotion, 0, 0, W, H)
+                }
+                else if(hbippe.intersects(pinn)) {
+                    sant = false
+                    explo.play();
+                    ctx.drawImage(explotion, 0, 0, W, H)
+                }
             }
-        }
-        else {
-            v2 = W/130
-            //oskar start
-            ctx.drawImage(ippe, x_pos, y_pos, W/20, H/10)
-            //oskar slut
-            if(hbippe.intersects(hitbox2) || hbippe.intersects(hitbox4)) {
-                x_pos = W/2-37.5
-                y_pos = H/2-50
-                hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
+        } 
+            else {
+                v2 = W/130
+                //oskar start
+                ctx.drawImage(ippe, x_pos, y_pos, W/20, H/10)
+                //oskar slut
+                if(hbippe.intersects(hitbox2) || hbippe.intersects(hitbox4)) {
+                    x_pos = W/2-37.5
+                    y_pos = H/2-50
+                    hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
+                }
             }
-        }
     } else if (wait_time < 1000) {
             wait_time += deltaTime
         } else {
