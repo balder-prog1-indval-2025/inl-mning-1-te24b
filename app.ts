@@ -74,7 +74,6 @@ function rörelse_hitbox() {
 //isak slut
 let sant = true
 let sant2 = true
-let sant3 = true
 let wait_time = 0
 let wait_time2 = 0
 let wait_time3 = 0
@@ -184,7 +183,18 @@ update = async () => {
                     ctx.drawImage(explotion, 0, 0, W, H)
                 }
             }
-        } 
+        }
+        else if((keyboard.d || keyboard.right) || (keyboard.a || keyboard.left)) {
+            wait_time2 += deltaTime
+        }
+        else if(wait_time2 > 5000) {
+            sant2 = false
+            wait_time3 += deltaTime
+            wait_time2 = 0
+        }
+        else if(wait_time3 > 10000) {
+            sant2 = true
+        }
             else {
                 v2 = W/130
                 //oskar start
