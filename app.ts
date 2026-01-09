@@ -36,8 +36,8 @@ let y = randomItem(W/-150, W/150, W/-80, W/80)
 let v1 = Math.sqrt(x**2 + y**2)
 let nuvarande_y_movement = y/v1 * v2
 let nuvarande_x_movement = x/v1 * v2
-let pinn = new Hitbox (W-75,upnerpil,W/50,H/5)
-let pinn2 = new Hitbox (0+W/30,upnerwasd,W/50,H/5)
+let pinn = new Hitbox (W-75,upnerpil,1,H/5)
+let pinn2 = new Hitbox (0+W/18.8,upnerwasd,1,H/5)
 function hastighet(w_hastighet_x, w_hastighet_y) {
     let x=w_hastighet_x
     let y=w_hastighet_y
@@ -94,7 +94,7 @@ update = async () => {
 
         } 
         rectangle (0+W/30,upnerwasd,W/50,H/5,"yellow")
-        pinn2.x = 0+W/30
+        pinn2.x = 0+W/18.8
         pinn2.y = upnerwasd
         if (keyboard.w && upnerwasd > 0)  {
             (upnerwasd -= H/150)
