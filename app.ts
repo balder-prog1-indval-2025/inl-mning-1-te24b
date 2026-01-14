@@ -7,7 +7,7 @@ let score1 = 0
 let score2 = 0
 var audio2 = new Audio('victory_sJDDywi.mp3'); 
 var audio3 = new Audio('routainen-maa-my-summer-car-soundtrack/routainen-maa-my-summer-car-soundtrack.mp3'); 
-if (score1 || score2 > 10){
+if ((score1 || score2) > 9){
   audio1.loop = false
   audio1.pause()
  }
@@ -15,7 +15,7 @@ if (score1 || score2 > 10){
 //marre start
 var audio1 = new Audio('The Good the Bad and the Ugly.mp3'); 
 audio1.play(); 
-if (score1 || score2 < 10){
+if ((score1 || score2) < 11){
     audio1.loop = true
     audio1.play(); 
 }
@@ -139,7 +139,7 @@ update = async () => {
         }
      
      
-        if (score1 || score2 > 10){
+        if ((score1 || score2) > 10){
            audio2.play(); 
            audio1.loop = false
         }
