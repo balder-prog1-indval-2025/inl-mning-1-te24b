@@ -228,9 +228,6 @@ update = async () => {
  
  
    //Isak Stop
-
-
-   
 }
  
 
