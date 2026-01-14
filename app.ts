@@ -143,9 +143,10 @@ update = async () => {
         if ((score1 || score2) > 9){
            audio2.play(); 
            ctx.drawImage(vinst, 0, 0, W, H)
-        }
-
+           sant = false
         
+        
+        }
         //Oskar stop
         //Isak Start
         if(sant2) {
