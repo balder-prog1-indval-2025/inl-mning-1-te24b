@@ -2,20 +2,24 @@
 let bäst = await fetchImage("krona.jpg")
 let ogge = await fetchImage("ogge.png")
 let marre = await fetchImage("marre.png")
-
 let upnerwasd =H/2 - H/10
-
 let score1 = 0
 let score2 = 0
+var audio2 = new Audio('victory_sJDDywi.mp3'); 
+var audio3 = new Audio('routainen-maa-my-summer-car-soundtrack/routainen-maa-my-summer-car-soundtrack.mp3'); 
+if (score1 || score2 > 10){
+  audio1.loop = false
+  audio1.pause()
+ }
 //oskar slut
 //marre start
 var audio1 = new Audio('The Good the Bad and the Ugly.mp3'); 
-var audio2 = new Audio('victory_sJDDywi.mp3'); 
 audio1.play(); 
-
-audio1.loop = true  
+if (score1 || score2 < 10){
+    audio1.loop = true
+    audio1.play(); 
+}
 let bakrund = await fetchImage("isak fisak.png")
-
 let upnerpil = H/2 - H/10
 //marre slut
 //isak start
@@ -137,7 +141,7 @@ update = async () => {
      
         if (score1 || score2 > 10){
            audio2.play(); 
-           
+           audio1.loop = false
         }
         //Oskar stop
         //Isak Start
@@ -204,7 +208,7 @@ update = async () => {
                     explo.play();
                     ctx.drawImage(explotion, 0, 0, W, H)
                 }
-            }
+            }   
         }
         if(wait_time2 > 5000) {
             sant2 = false
