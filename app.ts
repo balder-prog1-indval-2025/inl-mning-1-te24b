@@ -2,6 +2,7 @@
 let bäst = await fetchImage("krona.jpg")
 let ogge = await fetchImage("ogge.png")
 let marre = await fetchImage("marre.png")
+let vinst = await fetchImage("bich2.png")
 let upnerwasd =H/2 - H/10
 let score1 = 0
 let score2 = 0
@@ -139,10 +140,12 @@ update = async () => {
         }
      
      
-        if ((score1 || score2) > 10){
+        if ((score1 || score2) > 9){
            audio2.play(); 
-           audio1.loop = false
+           ctx.drawImage(vinst, 0, 0, W, H)
         }
+
+        
         //Oskar stop
         //Isak Start
         if(sant2) {
