@@ -138,7 +138,7 @@ update = async () => {
             ctx.drawImage(bäst, W - W / 2 + 200, 28, W/40, H/20)
      
         }
-    
+     
      
         if ((score1 || score2) > 9){
            audio2.play(); 
