@@ -71,12 +71,14 @@ function rörelse_hitbox() {
         hastighet(randomItem(W/150, W/200), randomItem(W/-150, W/-200))
     }
 }
-//isak slut
+let Powerup = false
+let Super = false
 let sant = true
 let sant2 = true
 let wait_time = 0
 let wait_time2 = 0
 let wait_time3 = 0
+//isak slut
 update = async () => {
     //oskar början
     if(sant) {
@@ -139,6 +141,26 @@ update = async () => {
         }
         //Oskar stop
         //Isak Start
+        if(keyboard.d || keyboard.a || keyboard.left || keyboard.right) {
+            Super = true
+            Powerup = true
+        } else {
+            Super = false
+        }
+        if(Powerup) {
+            wait_time2 += deltaTime
+        }
+        if(Super == false) {
+            v2 = W/130
+            //oskar start
+            ctx.drawImage(ippe, x_pos, y_pos, W/20, H/10)
+            //oskar slut
+            if(hbippe.intersects(hitbox2) || hbippe.intersects(hitbox4)) {
+                x_pos = W/2-37.5
+                y_pos = H/2-50
+                hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
+            }
+        }
         if(sant2) {
             if(keyboard.a || keyboard.left) {
                 x=x*2
@@ -184,28 +206,15 @@ update = async () => {
                 }
             }
         }
-        else if((keyboard.d || keyboard.right) || (keyboard.a || keyboard.left)) {
-            wait_time2 += deltaTime
-        }
-        else if(wait_time2 > 5000) {
+        if(wait_time2 > 5000) {
             sant2 = false
             wait_time3 += deltaTime
-            wait_time2 = 0
         }
         else if(wait_time3 > 10000) {
             sant2 = true
+            wait_time3 = 0
+            wait_time2 = 0
         }
-            else {
-                v2 = W/130
-                //oskar start
-                ctx.drawImage(ippe, x_pos, y_pos, W/20, H/10)
-                //oskar slut
-                if(hbippe.intersects(hitbox2) || hbippe.intersects(hitbox4)) {
-                    x_pos = W/2-37.5
-                    y_pos = H/2-50
-                    hastighet(randomItem(W/-150, W/-200), randomItem(W/150, W/200))
-                }
-            }
     } else if (wait_time < 1000) {
             wait_time += deltaTime
         } else {
