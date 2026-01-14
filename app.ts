@@ -137,7 +137,7 @@ update = async () => {
             ctx.drawImage(bäst, W - W / 2 + 200, 28, W/40, H/20)
      
         }
-     
+    
      
         if (score1 || score2 > 10){
            audio2.play(); 
@@ -145,9 +145,13 @@ update = async () => {
         }
         //Oskar stop
         //Isak Start
-        if(keyboard.d || keyboard.a || keyboard.left || keyboard.right) {
-            Super = true
-            Powerup = true
+        if(sant2) {
+            if(keyboard.d || keyboard.a || keyboard.left || keyboard.right) {
+                Super = true
+                Powerup = true
+            } else {
+                Super = false
+            }
         } else {
             Super = false
         }
@@ -214,8 +218,9 @@ update = async () => {
             sant2 = false
             wait_time3 += deltaTime
         }
-        else if(wait_time3 > 10000) {
+        if(wait_time3 > 10000) {
             sant2 = true
+            Powerup = false
             wait_time3 = 0
             wait_time2 = 0
         }
