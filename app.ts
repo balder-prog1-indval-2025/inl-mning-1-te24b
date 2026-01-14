@@ -9,11 +9,11 @@ let score1 = 0
 let score2 = 0
 //oskar slut
 //marre start
-var audio = new Audio('The Good the Bad and the Ugly.mp3'); 
+var audio1 = new Audio('The Good the Bad and the Ugly.mp3'); 
+var audio2 = new Audio('victory_sJDDywi.mp3'); 
+audio1.play(); 
 
-audio.play(); 
-
-audio.loop = true  
+audio1.loop = true  
 let bakrund = await fetchImage("isak fisak.png")
 
 let upnerpil = H/2 - H/10
@@ -134,8 +134,8 @@ update = async () => {
      
      
         if (score1 || score2 > 10){
+           audio2.play(); 
            
-     
         }
         //Oskar stop
         //Isak Start
@@ -219,7 +219,7 @@ update = async () => {
 
    
 }
-
+ 
 
 
 export { }
