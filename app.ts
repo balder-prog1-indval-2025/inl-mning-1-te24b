@@ -4,8 +4,8 @@ let ogge = await fetchImage("ogge.png")
 let marre = await fetchImage("marre.png")
 let vinst1 = await fetchImage("bich2.png")
 let upnerwasd =H/2 - H/10
-let score1 = 0
-let score2 = 0
+let score1 = 0  
+let score2 = 0 
 var vinst2 = new Audio('victory_sJDDywi.mp3'); 
 var oskasprängend = new Audio('routainen-maa-my-summer-car-soundtrack/routainen-maa-my-summer-car-soundtrack.mp3'); 
 if ((score1 || score2) > 9){
@@ -143,6 +143,7 @@ update = async () => {
         if ((score1 || score2) > 9){
            vinst2.play(); 
            ctx.drawImage(vinst1, 0, 0, W, H)
+           
            sant = false
         
         
