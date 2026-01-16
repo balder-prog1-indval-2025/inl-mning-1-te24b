@@ -238,7 +238,6 @@ update = async () => {
  
    //Isak Stop
 }
- 
 
 
 export { }
