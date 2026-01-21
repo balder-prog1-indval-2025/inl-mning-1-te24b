@@ -20,7 +20,6 @@ video.controls=false;
 video.loop=false;
 video.muted=true;
 document.body.appendChild(video);
-video.play();
 //oskar slut
 //marre start
 var audio1 = new Audio('The Good the Bad and the Ugly.mp3');
@@ -242,11 +241,13 @@ update = async () => {
                     sant = false
                     explo.play();
                     ctx.drawImage(explotion, 0, 0, W, H)
+                    video.play();
                 }
                 else if(hbippe.intersects(pinn)) {
                     sant = false
                     explo.play();
                     ctx.drawImage(explotion, 0, 0, W, H)
+                    video.play();
                 }
             }  
         }
