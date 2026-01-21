@@ -125,7 +125,7 @@ update = async () => {
         hbippe.y = y_pos
         rörelse_hitbox()
         //isak slut
-//marvin start
+//marvin start 
 
    timeout += deltaTime
    if (timeout > 1000 && i>=0)  {
