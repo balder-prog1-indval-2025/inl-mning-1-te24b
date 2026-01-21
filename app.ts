@@ -216,7 +216,7 @@ update = async () => {
                     explo.play();
                     ctx.drawImage(explotion, 0, 0, W, H)
                 }
-            }   
+            }
         } 
         if(wait_time2 > 5000) {
             sant2 = false
