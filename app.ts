@@ -1,3 +1,4 @@
+
 //oskar början
 let bäst = await fetchImage("krona.jpg")
 let ogge = await fetchImage("ogge.png")
@@ -5,20 +6,20 @@ let marre = await fetchImage("marre.png")
 let vinst1 = await fetchImage("bich2.png")
 let upnerwasd =H/2 - H/10
 let score1 = 0  
-let score2 = 0 
-var vinst2 = new Audio('victory_sJDDywi.mp3'); 
-var oskasprängend = new Audio('routainen-maa-my-summer-car-soundtrack/routainen-maa-my-summer-car-soundtrack.mp3'); 
+let score2 = 0
+var vinst2 = new Audio('victory_sJDDywi.mp3');
+var oskasprängend = new Audio('routainen-maa-my-summer-car-soundtrack/routainen-maa-my-summer-car-soundtrack.mp3');
 if ((score1 || score2) > 9){
   audio1.loop = false
   audio1.pause()
  }
 //oskar slut
 //marre start
-var audio1 = new Audio('The Good the Bad and the Ugly.mp3'); 
-audio1.play(); 
+var audio1 = new Audio('The Good the Bad and the Ugly.mp3');
+audio1.play();
 if ((score1 || score2) < 11){
     audio1.loop = true
-    audio1.play(); 
+    audio1.play();
 }
 let bakrund = await fetchImage("isak fisak.png")
 let upnerpil = H/2 - H/10
@@ -82,7 +83,12 @@ let sant = true
 let sant2 = true
 let wait_time = 0
 let wait_time2 = 0
-let wait_time3 = 0
+let wait_time3 = 0    
+let timeout = 0
+let i=10 
+let o=10
+let circles = [600,640,680,720,760,800,840,880,920,960,1000]
+let circles2 =[600,640,680,720,760,800,840,880,920,960,1000]
 //isak slut
 update = async () => {
     //oskar början
@@ -94,22 +100,22 @@ update = async () => {
     pinn.y = upnerpil
         if (keyboard.up && upnerpil > 0) {
         (upnerpil -= H/150)
-
-        } 
+ 
+        }
         else if (keyboard.down && upnerpil < H - H/5) {
             ( upnerpil += H/150)
-
-        } 
+ 
+        }
         rectangle (0+W/30,upnerwasd,W/50,H/5,"yellow")
         pinn2.x = 0+W/18.8
         pinn2.y = upnerwasd
         if (keyboard.w && upnerwasd > 0)  {
             (upnerwasd -= H/150)
-
-        } 
+ 
+        }
         else if (keyboard.s && upnerwasd < H - H/5) {
             (upnerwasd += H/150)
-
+ 
         }
         //oskar slut
         //isak start
@@ -119,6 +125,21 @@ update = async () => {
         hbippe.y = y_pos
         rörelse_hitbox()
         //isak slut
+//marvin start
+
+   timeout += deltaTime
+   if (timeout > 1000 && i>=0)  {
+    circles.pop()
+       
+     
+       timeout = 0
+       i-=1
+   }
+   for(let j=0; j<circles.length; j++ ) {
+       circle(   circles[j],  75 , 20)
+
+   }
+   //marvin slut
         //Oskar Start
         if (hbippe.intersects(hitbox2) ){
             score1 += 1
@@ -141,12 +162,12 @@ update = async () => {
      
      
         if ((score1 || score2) > 9){
-           vinst2.play(); 
+           vinst2.play();
            ctx.drawImage(vinst1, 0, 0, W, H)
            
            sant = false
-        
-        
+       
+       
         }
         //Oskar stop
         //Isak Start
@@ -217,8 +238,8 @@ update = async () => {
                     explo.play();
                     ctx.drawImage(explotion, 0, 0, W, H)
                 }
-            }   
-        } 
+            }  
+        }
         if(wait_time2 > 5000) {
             sant2 = false
             wait_time3 += deltaTime
@@ -239,6 +260,6 @@ update = async () => {
  
    //Isak Stop
 }
-
-
+ 
+ 
 export { }
