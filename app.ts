@@ -76,7 +76,7 @@ function rörelse_hitbox() {
     else if(hbippe.intersects(pinn2) && (nuvarande_y_movement < 0)) {
         hastighet(randomItem(W/150, W/200), randomItem(W/-150, W/-200))
     }
-}
+}  
 let Powerup = false
 let Super = false
 let sant = true
