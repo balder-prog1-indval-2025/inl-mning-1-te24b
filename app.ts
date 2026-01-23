@@ -1,5 +1,7 @@
 
 //oskar början
+var audio1 = new Audio('The Good the Bad and the Ugly.mp3');
+audio1.muted = false
 let bäst = await fetchImage("krona.jpg")
 let ogge = await fetchImage("ogge.png")
 let marre = await fetchImage("marre.png")
@@ -11,7 +13,7 @@ var vinst2 = new Audio('victory_sJDDywi.mp3');
 var oskasprängend = new Audio('routainen-maa-my-summer-car-soundtrack/routainen-maa-my-summer-car-soundtrack.mp3');
 if ((score1 || score2) > 9){
   audio1.loop = false
-  audio1.pause()
+  audio1.muted = true
  }
  //oskar slut
  //isak start
@@ -33,7 +35,6 @@ video.style.opacity = "0";
 document.body.appendChild(video);
 //isak slut
 //marre start
-var audio1 = new Audio('The Good the Bad and the Ugly.mp3');
 audio1.play();
 if ((score1 || score2) < 11){
     audio1.loop = true
@@ -184,7 +185,7 @@ update = async () => {
         if ((score1 || score2) > 9){
            vinst2.play();
            ctx.drawImage(vinst1, 0, 0, W, H)
-           
+           audio1.muted = true
            sant = false
        
        
