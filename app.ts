@@ -12,7 +12,7 @@ var oskasprängend = new Audio('routainen-maa-my-summer-car-soundtrack/routainen
 if ((score1 || score2) > 9){
   audio1.loop = false
   audio1.pause()
- }
+ } 
  //oskar slut
  //isak start
 const video = document.createElement("video") as HTMLVideoElement;
