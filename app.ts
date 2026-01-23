@@ -13,14 +13,25 @@ if ((score1 || score2) > 9){
   audio1.loop = false
   audio1.pause()
  }
+ //oskar slut
+ //isak start
 const video = document.createElement("video") as HTMLVideoElement;
-video.src = "jordenslut.mp4";
+video.src = "jordenslut (1).mp4";
 video.autoplay=false;
 video.controls=false;
 video.loop=false;
-video.muted=true;
+video.muted=false;
+video.style.position = "fixed";
+video.style.top = "0";
+video.style.left = "0";
+video.style.width = "100vw";
+video.style.height = "100vh";
+video.style.objectFit = "cover";
+video.style.zIndex = "9999";
+video.style.pointerEvents = "none";
+video.style.opacity = "0";
 document.body.appendChild(video);
-//oskar slut
+//isak slut
 //marre start
 var audio1 = new Audio('The Good the Bad and the Ugly.mp3');
 audio1.play();
@@ -241,12 +252,14 @@ update = async () => {
                     sant = false
                     explo.play();
                     ctx.drawImage(explotion, 0, 0, W, H)
+                    video.style.opacity = "1";
                     video.play();
                 }
                 else if(hbippe.intersects(pinn)) {
                     sant = false
                     explo.play();
                     ctx.drawImage(explotion, 0, 0, W, H)
+                    video.style.opacity = "1";
                     video.play();
                 }
             }  
