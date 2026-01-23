@@ -12,7 +12,7 @@ var oskasprängend = new Audio('routainen-maa-my-summer-car-soundtrack/routainen
 if ((score1 || score2) > 9){
   audio1.loop = false
   audio1.pause()
- }
+ } 
 //oskar slut
 //marre start
 var audio1 = new Audio('The Good the Bad and the Ugly.mp3');
