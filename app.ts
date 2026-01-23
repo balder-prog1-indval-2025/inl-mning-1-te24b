@@ -12,8 +12,26 @@ var oskasprängend = new Audio('routainen-maa-my-summer-car-soundtrack/routainen
 if ((score1 || score2) > 9){
   audio1.loop = false
   audio1.pause()
- } 
-//oskar slut
+ }
+ //oskar slut
+ //isak start
+const video = document.createElement("video") as HTMLVideoElement;
+video.src = "jordenslut (1).mp4";
+video.autoplay=false;
+video.controls=false;
+video.loop=false;
+video.muted=false;
+video.style.position = "fixed";
+video.style.top = "0";
+video.style.left = "0";
+video.style.width = "100vw";
+video.style.height = "100vh";
+video.style.objectFit = "cover";
+video.style.zIndex = "9999";
+video.style.pointerEvents = "none";
+video.style.opacity = "0";
+document.body.appendChild(video);
+//isak slut
 //marre start
 var audio1 = new Audio('The Good the Bad and the Ugly.mp3');
 audio1.play();
@@ -87,8 +105,10 @@ let wait_time3 = 0
 let timeout = 0
 let i=10 
 let o=10
-let circles = [600,640,680,720,760,800,840,880,920,960,1000]
-let circles2 =[600,640,680,720,760,800,840,880,920,960,1000]
+//marre start
+let circles = [W/2.8,W/2.555,W/2.35,W/2.175,W/2.025,W/1.895,W/1.78,W/1.678,W/1.585,W/1.5,W/1.4]
+let circles2 =[W/2.8,W/2.555,W/2.35,W/2.175,W/2.025,W/1.895,W/1.78,W/1.678,W/1.585,W/1.5,W/1.4]
+//marre stop
 //isak slut
 update = async () => {
     //oskar början
@@ -232,11 +252,15 @@ update = async () => {
                     sant = false
                     explo.play();
                     ctx.drawImage(explotion, 0, 0, W, H)
+                    video.style.opacity = "1";
+                    video.play();
                 }
                 else if(hbippe.intersects(pinn)) {
                     sant = false
                     explo.play();
                     ctx.drawImage(explotion, 0, 0, W, H)
+                    video.style.opacity = "1";
+                    video.play();
                 }
             }  
         }
