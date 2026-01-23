@@ -13,7 +13,7 @@ var vinst2 = new Audio('victory_sJDDywi.mp3');
 var oskasprängend = new Audio('routainen-maa-my-summer-car-soundtrack/routainen-maa-my-summer-car-soundtrack.mp3');
 if ((score1 || score2) > 9){
   audio1.loop = false
-  audio1.muted = true
+ 
  }
  //oskar slut
  //isak start
