@@ -1,5 +1,7 @@
 
 //oskar början
+var audio1 = new Audio('The Good the Bad and the Ugly.mp3');
+audio1.muted = false
 let bäst = await fetchImage("krona.jpg")
 let ogge = await fetchImage("ogge.png")
 let marre = await fetchImage("marre.png")
@@ -11,8 +13,8 @@ var vinst2 = new Audio('victory_sJDDywi.mp3');
 var oskasprängend = new Audio('routainen-maa-my-summer-car-soundtrack/routainen-maa-my-summer-car-soundtrack.mp3');
 if ((score1 || score2) > 9){
   audio1.loop = false
-  audio1.pause()
- } 
+  audio1.muted = true
+ }
  //oskar slut
  //isak start
 const video = document.createElement("video") as HTMLVideoElement;
@@ -21,6 +23,7 @@ video.autoplay=false;
 video.controls=false;
 video.loop=false;
 video.muted=false;
+video.volume=1;
 video.style.position = "fixed";
 video.style.top = "0";
 video.style.left = "0";
@@ -30,10 +33,10 @@ video.style.objectFit = "cover";
 video.style.zIndex = "9999";
 video.style.pointerEvents = "none";
 video.style.opacity = "0";
+video.style.transition = "opacity 1s ease-in-out";
 document.body.appendChild(video);
 //isak slut
 //marre start
-var audio1 = new Audio('The Good the Bad and the Ugly.mp3');
 audio1.play();
 if ((score1 || score2) < 11){
     audio1.loop = true
@@ -96,6 +99,7 @@ function rörelse_hitbox() {
     }
 }  
 let Powerup = false
+let pressed = false
 let Super = false
 let sant = true
 let sant2 = true
@@ -103,11 +107,14 @@ let wait_time = 0
 let wait_time2 = 0
 let wait_time3 = 0    
 let timeout = 0
-let i=10 
+let timeout2 = 0
+let i=10
 let o=10
+let q=10
 //marre start
-let circles = [W/2.8,W/2.555,W/2.35,W/2.175,W/2.025,W/1.895,W/1.78,W/1.678,W/1.585,W/1.5,W/1.4]
-let circles2 =[W/2.8,W/2.555,W/2.35,W/2.175,W/2.025,W/1.895,W/1.78,W/1.678,W/1.585,W/1.5,W/1.4]
+let circles = [W/2.8,W/2.555,W/2.35,W/2.175,W/2.025,W/1.895,W/1.78,W/1.678,W/1.585,W/1.5]
+let circles2 =[W/2.8,W/2.555,W/2.35,W/2.175,W/2.025,W/1.895,W/1.78,W/1.678,W/1.585,W/1.5]
+let circles_copy = [W/2.8,W/2.555,W/2.35,W/2.175,W/2.025,W/1.895,W/1.78,W/1.678,W/1.585,W/1.5]
 //marre stop
 //isak slut
 update = async () => {
@@ -146,18 +153,28 @@ update = async () => {
         rörelse_hitbox()
         //isak slut
 //marvin start 
-
-   timeout += deltaTime
-   if (timeout > 1000 && i>=0)  {
-    circles.pop()
-       
+   if (timeout > 500 && i>=0)  {
+    circles.pop() 
      
        timeout = 0
        i-=1
+       q-=1
    }
    for(let j=0; j<circles.length; j++ ) {
        circle(   circles[j],  75 , 20)
 
+   }
+   if (pressed == false) {
+    timeout2 += deltaTime
+   }
+   if (timeout2 > 1000 && q<10)  {
+    circles.push(circles_copy[q])
+
+       timeout2 = 0
+       q+=1
+   }
+   if(q==10) {
+    i=10
    }
    //marvin slut
         //Oskar Start
@@ -184,18 +201,27 @@ update = async () => {
         if ((score1 || score2) > 9){
            vinst2.play();
            ctx.drawImage(vinst1, 0, 0, W, H)
-           
+           audio1.muted = true
            sant = false
        
        
         }
         //Oskar stop
         //Isak Start
+        if(keyboard.d || keyboard.a || keyboard.left || keyboard.right) {
+            pressed = true
+        } else {
+            pressed = false
+        }
+        console.log(pressed)
+        console.log(timeout2)
         if(sant2) {
             if(keyboard.d || keyboard.a || keyboard.left || keyboard.right) {
+                pressed = true
                 Super = true
                 Powerup = true
             } else {
+                pressed = false
                 Super = false
             }
         } else {
@@ -217,6 +243,7 @@ update = async () => {
         }
         if(sant2) {
             if(keyboard.a || keyboard.left) {
+                timeout += deltaTime
                 x=x*2
                 y=y*2
                 v2 = W/80
@@ -230,6 +257,7 @@ update = async () => {
                 }
             }
             else if(keyboard.d || keyboard.right) {
+                timeout += deltaTime
                 x=x/2
                 y/y/2
                 v2 = W/200
@@ -254,6 +282,7 @@ update = async () => {
                     ctx.drawImage(explotion, 0, 0, W, H)
                     video.style.opacity = "1";
                     video.play();
+                    audio1.muted = true
                 }
                 else if(hbippe.intersects(pinn)) {
                     sant = false
@@ -261,6 +290,7 @@ update = async () => {
                     ctx.drawImage(explotion, 0, 0, W, H)
                     video.style.opacity = "1";
                     video.play();
+                    audio1.muted = true
                 }
             }  
         }
