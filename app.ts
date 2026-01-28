@@ -1,19 +1,20 @@
 
 //oskar början
-var audio1 = new Audio('The Good the Bad and the Ugly.mp3');
+var audio1 = new Audio('The Good the Bad and the Ugly.mp3'); // bakrunds ljudet
 audio1.muted = false
-let bäst = await fetchImage("krona.jpg")
-let ogge = await fetchImage("ogge.png")
-let marre = await fetchImage("marre.png")
-let vinst1 = await fetchImage("bich2.png")
-let upnerwasd =H/2 - H/10
-let score1 = 0  
-let score2 = 0
-var vinst2 = new Audio('victory_sJDDywi.mp3');
+let bäst = await fetchImage("krona.jpg")// kronan som visar att man leder
+let ogge = await fetchImage("ogge.png")// bilden på oskar 
+let marre = await fetchImage("marre.png")//bilden på marvin
+let vinst1 = await fetchImage("bich2.png")// bilden på isak
+let upnerwasd =H/2 - H/10// kontrollerna för att röra sig upp och ner med wasd
+let upnerpil = H/2 - H/10// kontrollerna för att röra sig upp och ner med pil tangenterna 
+let score1 = 0  // poäng tavlan till vänster
+let score2 = 0  // poäng tavlan till höger 
+var vinstljudet = new Audio('victory_sJDDywi.mp3'); // happywhels ljudet när nån fått tio poäng 
 var oskasprängend = new Audio('routainen-maa-my-summer-car-soundtrack/routainen-maa-my-summer-car-soundtrack.mp3');
 if ((score1 || score2) > 9){
   audio1.loop = false
-  audio1.muted = true
+ 
  }
  //oskar slut
  //isak start
@@ -43,13 +44,13 @@ if ((score1 || score2) < 11){
     audio1.play();
 }
 let bakrund = await fetchImage("isak fisak.png")
-let upnerpil = H/2 - H/10
+
 //marre slut
 //isak start
 let boom = new Audio('vine-boom.mp3')
 let explotion = await fetchImage("explosion-explode.gif")
 var explo = new Audio('explosion-meme_dTCfAHs.mp3')
-let x_pos = W/2-37.5
+let x_pos = W/2-37.5  //x_pos är positionen för gu
 let y_pos = H/2-50
 let hbippe = new Hitbox(x_pos, y_pos, W/20, H/10)
 let ippe = await fetchImage("ipse.png")
@@ -199,7 +200,7 @@ update = async () => {
      
      
         if ((score1 || score2) > 9){
-           vinst2.play();
+           vinstljudet.play();
            ctx.drawImage(vinst1, 0, 0, W, H)
            audio1.muted = true
            sant = false
