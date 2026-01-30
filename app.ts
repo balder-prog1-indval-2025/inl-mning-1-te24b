@@ -11,7 +11,6 @@ let upnerpil = H/2 - H/10// kontrollerna för att röra sig upp och ner med pil 
 let score1 = 0  // poäng tavlan till vänster
 let score2 = 0  // poäng tavlan till höger 
 var vinstljudet = new Audio('victory_sJDDywi.mp3'); // happywhels ljudet när nån fått tio poäng 
-var oskasprängend = new Audio('routainen-maa-my-summer-car-soundtrack/routainen-maa-my-summer-car-soundtrack.mp3');
 if ((score1 || score2) > 9){
   audio1.loop = false
  
@@ -48,7 +47,6 @@ let bakrund = await fetchImage("isak fisak.png")
 //marre slut
 //isak start
 let boom = new Audio('vine-boom.mp3')
-let explotion = await fetchImage("explosion-explode.gif")
 var explo = new Audio('explosion-meme_dTCfAHs.mp3')
 let x_pos = W/2-37.5  //x_pos är positionen för gu
 let y_pos = H/2-50
@@ -99,22 +97,17 @@ function rörelse_hitbox() {
         hastighet(randomItem(W/150, W/200), randomItem(W/-150, W/-200))
     }
 }  
-let Powerup = false
 let pressed = false
+let pressed2 = false
 let Super = false
 let sant = true
 let sant2 = true
-let wait_time = 0
-let wait_time2 = 0
-let wait_time3 = 0    
 let timeout = 0
 let timeout2 = 0
 let i=10
-let o=10
 let q=10
 //marre start
 let circles = [W/2.8,W/2.555,W/2.35,W/2.175,W/2.025,W/1.895,W/1.78,W/1.678,W/1.585,W/1.5]
-let circles2 =[W/2.8,W/2.555,W/2.35,W/2.175,W/2.025,W/1.895,W/1.78,W/1.678,W/1.585,W/1.5]
 let circles_copy = [W/2.8,W/2.555,W/2.35,W/2.175,W/2.025,W/1.895,W/1.78,W/1.678,W/1.585,W/1.5]
 //marre stop
 //isak slut
@@ -154,18 +147,16 @@ update = async () => {
         rörelse_hitbox()
         //isak slut
 //marvin start 
-   if (timeout > 500 && i>=0)  {
-    circles.pop() 
-     
+   if (timeout > 500 && i>=0) {
+    circles.pop()
        timeout = 0
        i-=1
        q-=1
    }
    for(let j=0; j<circles.length; j++ ) {
        circle(   circles[j],  75 , 20)
-
    }
-   if (pressed == false) {
+   if (pressed == false && i!=10) {
     timeout2 += deltaTime
    }
    if (timeout2 > 1000 && q<10)  {
@@ -179,57 +170,54 @@ update = async () => {
    }
    //marvin slut
         //Oskar Start
-        if (hbippe.intersects(hitbox2) ){
-            score1 += 1
+            if (hbippe.intersects(hitbox2) && pressed2==false){
+                score1 += 1
+                }
+                if (hbippe.intersects(hitbox4) && pressed2==false){
+                score2 += 1
+                }
+                text(score1, W - W / 2 + 100, 50, 48, 'black')
+                text(score2, W - W / 2 - 100, 50, 48, 'svart')
+                text('score', W / 2 -55, 50, 50, 'svart')
+            if (score1 < score2 ){
+                ctx.drawImage(bäst,W - W / 2 - 200 , 28, W/40, H/20)
+        
             }
-            if (hbippe.intersects(hitbox4) ){
-            score2 += 1
+        
+            if (score1 > score2 ){
+                ctx.drawImage(bäst, W - W / 2 + 200, 28, W/40, H/20)
+        
             }
-            text(score1, W - W / 2 + 100, 50, 48, 'black')
-            text(score2, W - W / 2 - 100, 50, 48, 'svart')
-            text('score', W / 2 -55, 50, 50, 'svart')
-        if (score1 < score2 ){
-            ctx.drawImage(bäst,W - W / 2 - 200 , 28, W/40, H/20)
-     
-        }
-     
-        if (score1 > score2 ){
-            ctx.drawImage(bäst, W - W / 2 + 200, 28, W/40, H/20)
-     
-        }
-     
-     
-        if ((score1 || score2) > 9){
-           vinstljudet.play();
-           ctx.drawImage(vinst1, 0, 0, W, H)
-           audio1.muted = true
-           sant = false
-       
-       
-        }
+        
+        
+            if ((score1 || score2) == 10){
+            vinstljudet.play();
+            ctx.drawImage(vinst1, 0, 0, W, H)
+            audio1.muted = true
+            sant = false
+        
+        
+            }
         //Oskar stop
         //Isak Start
-        if(keyboard.d || keyboard.a || keyboard.left || keyboard.right) {
-            pressed = true
-        } else {
+        if(sant2==false) {
             pressed = false
         }
-        console.log(pressed)
-        console.log(timeout2)
         if(sant2) {
             if(keyboard.d || keyboard.a || keyboard.left || keyboard.right) {
                 pressed = true
                 Super = true
-                Powerup = true
             } else {
                 pressed = false
                 Super = false
             }
+            if(keyboard.d || keyboard.right) {
+                pressed2=true
+            } else {
+                pressed2=false
+            }
         } else {
             Super = false
-        }
-        if(Powerup) {
-            wait_time2 += deltaTime
         }
         if(Super == false) {
             v2 = W/130
@@ -280,7 +268,6 @@ update = async () => {
                 else if(hbippe.intersects(pinn2)) {
                     sant = false
                     explo.play();
-                    ctx.drawImage(explotion, 0, 0, W, H)
                     video.style.opacity = "1";
                     video.play();
                     audio1.muted = true
@@ -288,31 +275,22 @@ update = async () => {
                 else if(hbippe.intersects(pinn)) {
                     sant = false
                     explo.play();
-                    ctx.drawImage(explotion, 0, 0, W, H)
                     video.style.opacity = "1";
                     video.play();
                     audio1.muted = true
                 }
             }  
         }
-        if(wait_time2 > 5000) {
+        if(q < 10 && pressed==false) {
             sant2 = false
-            wait_time3 += deltaTime
         }
-        if(wait_time3 > 10000) {
+        if(q==10) {
             sant2 = true
-            Powerup = false
-            wait_time3 = 0
-            wait_time2 = 0
         }
-    } else if (wait_time < 1000) {
-            wait_time += deltaTime
-        } else {
-            sant = true
-            wait_time = 0
+        if(q==0) {
+            sant2 = false
         }
- 
- 
+    } 
    //Isak Stop
 }
  
