@@ -190,14 +190,18 @@ update = async () => {
             }
         
         
-            if ((score1 || score2) == 10){
+            if (score1 == 10){
             vinstljudet.play();
             ctx.drawImage(vinst1, 0, 0, W, H)
             audio1.muted = true
             sant = false
-        
-        
             }
+            if (score2 == 10){
+                vinstljudet.play();
+                ctx.drawImage(vinst1, 0, 0, W, H)
+                audio1.muted = true
+                sant = false
+                }
         //Oskar stop
         //Isak Start
         if(pressed==true) {
