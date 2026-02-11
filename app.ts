@@ -23,7 +23,7 @@ video.autoplay=false;
 video.controls=false;
 video.loop=false;
 video.muted=false;
-video.volume=1;
+video.volume=0.7;
 video.style.position = "fixed"; 
 video.style.top = "0";
 video.style.left = "0";
@@ -33,11 +33,11 @@ video.style.objectFit = "cover";
 video.style.zIndex = "9999";
 video.style.pointerEvents = "none";
 video.style.opacity = "0";
-video.style.transition = "opacity 1s ease-in-out";
 document.body.appendChild(video);
 //isak slut
 //marre start
 audio1.play();
+audio1.volume=0.5;
 if ((score1 || score2) < 11){
     audio1.loop = true 
     audio1.play();
@@ -200,6 +200,11 @@ update = async () => {
             }
         //Oskar stop
         //Isak Start
+        if(pressed==true) {
+            boom.play();
+            boom.volume=1;
+            boom.loop=false;
+        }
         if(sant2==false) {
             pressed = false
         }
