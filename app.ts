@@ -180,12 +180,12 @@ update = async () => {
                 text(score2, W - W / 2 - 100, 50, 48, 'svart')
                 text('score', W / 2 -55, 50, 50, 'svart')
             if (score1 < score2 ){
-                ctx.drawImage(bäst,W - W / 2 - 200 , 28, W/40, H/20)
+                ctx.drawImage(bäst,W - W / 2 - 200 , 2, W/40, H/20)
         
             }
         
             if (score1 > score2 ){
-                ctx.drawImage(bäst, W - W / 2 + 200, 28, W/40, H/20)
+                ctx.drawImage(bäst, W - W / 2 + 200, 2, W/40, H/20)
         
             }
         
