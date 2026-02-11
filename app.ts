@@ -39,7 +39,7 @@ document.body.appendChild(video);
 //marre start
 audio1.play();
 if ((score1 || score2) < 11){
-    audio1.loop = true
+    audio1.loop = true 
     audio1.play();
 }
 let bakrund = await fetchImage("isak fisak.png")
