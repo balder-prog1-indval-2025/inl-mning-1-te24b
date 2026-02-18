@@ -6,7 +6,7 @@ let ogge = await fetchImage("ogge.png")
 let marre = await fetchImage("marre.png")
 
 let upnerwasd =H/2 - H/10
-
+ 
 let score1 = 0
 let score2 = 0
 //oskar slut
